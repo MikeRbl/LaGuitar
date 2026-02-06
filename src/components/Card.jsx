@@ -1,14 +1,43 @@
-export default function Card({ guitar, addToCart }) {
-
+export default function Card({ guitar, cart, setCart }) {
     const { name, image, description, price } = guitar
+
+    function addToCart(item) {
+      const itemExist = cart.findIndex(guitar => guitar.id === item.id);
+      if (itemExist !== -1) {
+        const newCart = [...cart];
+        newCart[itemExist].quantity += 1;
+        setCart(newCart);
+      } else {
+        setCart([...cart, { ...item, quantity: 1 }]);
+      }
+    }
+
+    const handleClick = (item) => {
+        // Verificar si ya existe en el carrito
+        const existeEnCarrito = cart.find(g => g.id === item.id)
+
+        if (existeEnCarrito) {
+            // Si existe, incrementar cantidad
+            const carritoActualizado = cart.map(g => {
+                if (g.id === item.id) {
+                    return { ...g, quantity: g.quantity + 1 }
+                }
+                return g
+            })
+            setCart(carritoActualizado)
+        } else {
+            // Si no existe, agregar con quantity 1
+            setCart([...cart, { ...item, quantity: 1 }])
+        }
+    }
 
     return (
         <div className="col-md-6 col-lg-4 my-4 row align-items-center">
             <div className="col-4">
                 <img
                     className="img-fluid"
-                    src={`/img/${image}.jpg`}
-                    alt={`imagen guitarra ${name}`}
+                    src={"/img/" + image + ".jpg"}
+                    alt="imagen guitarra"
                 />
             </div>
             <div className="col-8">
@@ -18,9 +47,9 @@ export default function Card({ guitar, addToCart }) {
                 <button
                     type="button"
                     className="btn btn-dark w-100"
-                    onClick={() => addToCart(guitar)}
+                    onClick={() => handleClick(guitar)}
                 >Agregar al Carrito</button>
             </div>
         </div>
     )
-} 
+}

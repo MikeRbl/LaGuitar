@@ -1,35 +1,57 @@
-// src/App.jsx
 import { useState, useEffect } from 'react'
-import Header from './components/Header' // Asegúrate de importar tus componentes
+import Header from './components/Header'
 import Footer from './components/Footer'
-import Guitar from './components/Guitar'
-import { db } from './data/db' // Importamos la base de datos simulada
+import './App.css'
+import Card from './components/Card'
+import { db } from "./db/db";
+
 
 function App() {
 
-  // State para guardar la data (inicializamos con la base de datos)
-  const [data, setData] = useState(db)
+  /*const [customer, setCustomer] = useState({});
+  const [total, setTotal] = useState(0);
+  const [products, setProducts] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [count, setCount] = useState(0);
+
+  console.log(total);
+
+  */
+ // () => setTotal(100);
+
+ /* if (auth){
+  const [modal, setModal] = useState(true);
+ }else{
+  const [modal, setModal] = useState(false);
+
+ } */
+
+  const [data, setData] = useState(db);
+  console.log(data);
+  
+  
+  /*useEffect(() => {
+    setData(db);
+  }, []) */
 
   return (
-    <>
-      <Header />
+    <div>
+
+      <Header></Header>
+
 
       <main className="container-xl mt-5">
-          <h2 className="text-center">Nuestra Colección</h2>
-
-          {/* El div 'row' es CRUCIAL para que el grid de bootstrap funcione */}
-          <div className="row mt-5">
-              {data.map((guitar) => (
-                  <Guitar 
-                      key={guitar.id} // Siempre necesita un key único
-                      guitar={guitar} // Pasamos el objeto entero como prop
-                  />
-              ))}
-          </div>
+        <h2 className="text-center">Nuestra Colección</h2>
+        <div className="row mt-5">
+          {data.map(() => (
+            <Card/>
+          ))}
+        </div>
       </main>
+      <Footer></Footer>
 
-      <Footer />
-    </>
+    </div>
+
   )
 }
 
