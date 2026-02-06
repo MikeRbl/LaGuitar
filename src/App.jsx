@@ -1,57 +1,39 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import './App.css'
 import Card from './components/Card'
-import { db } from "./db/db";
-
+import { db } from "./db/db"
 
 function App() {
 
-  /*const [customer, setCustomer] = useState({});
-  const [total, setTotal] = useState(0);
-  const [products, setProducts] = useState([]);
-  const [modal, setModal] = useState(false);
-  const [count, setCount] = useState(0);
-
-  console.log(total);
-
-  */
- // () => setTotal(100);
-
- /* if (auth){
-  const [modal, setModal] = useState(true);
- }else{
-  const [modal, setModal] = useState(false);
-
- } */
-
-  const [data, setData] = useState(db);
-  console.log(data);
+  // 1. Inicializamos la data con tu "base de datos"
+  const [data] = useState(db)
   
-  
-  /*useEffect(() => {
-    setData(db);
-  }, []) */
+  // 2. Estado para el carrito (necesario porque Card lo usa)
+  const [cart, setCart] = useState([])
 
   return (
-    <div>
-
-      <Header></Header>
-
+    <>
+      {/* Pasamos cart al Header si planeas mostrar el total allí más adelante */}
+      <Header />
 
       <main className="container-xl mt-5">
         <h2 className="text-center">Nuestra Colección</h2>
+
         <div className="row mt-5">
-          {data.map(() => (
-            <Card/>
+          {data.map((guitar) => (
+            <Card 
+              key={guitar.id}
+              guitar={guitar} // <--- ESTO FALTABA: Pasar el objeto guitarra
+              cart={cart}     // <--- Necesario para la lógica de tu Card
+              setCart={setCart}
+            />
           ))}
         </div>
       </main>
-      <Footer></Footer>
 
-    </div>
-
+      <Footer />
+    </>
   )
 }
 
