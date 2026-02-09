@@ -1,3 +1,4 @@
+// src/Componentes/Header.jsx
 import React from 'react'
 import Carrito from './Carrito.jsx'
 
@@ -12,7 +13,7 @@ export default function Header({ cart, setCart }) {
             <a href="/">
               <img 
                 className="img-fluid" 
-                src="/img/logo.svg" 
+                src="./img/logo.svg" // Cambiado de /img/ a ./img/
                 alt="imagen logo" 
               />
             </a>
@@ -22,7 +23,7 @@ export default function Header({ cart, setCart }) {
             <div className="carrito">
               <img 
                 className="img-fluid" 
-                src="/img/carrito.png" 
+                src="./img/carrito.png" // Cambiado de /img/ a ./img/
                 alt="imagen carrito" 
               />
 

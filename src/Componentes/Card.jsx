@@ -1,30 +1,6 @@
+// src/Componentes/Card.jsx
 export default function Card({ guitar, cart, setCart }) {
   const { name, image, description, price } = guitar
-  const hanbleClick = (item) => {
-    const existeEnCarrito = cart.find((guitarra) => guitarra.name === item.name)
-    if (existeEnCarrito) {
-        const carritoActualizado = cart.map((guitarra) => {
-            if (guitarra.name === item.name) {
-                return {
-                    ...guitarra,
-                    quantity: guitarra.quantity + 1
-                }
-            } else {
-                return guitarra
-            }
-        })
-        setCart(carritoActualizado)
-    } else {
-      setCart([...cart, 
-        {
-            name: item.name,
-            image: item.image,
-            price: item.price
-        }
-    ])
-
-  }
-  }
 
   function addToCart (item){
     const itemExit = cart.findIndex((guitar) => guitar.name === item.name)
@@ -37,12 +13,13 @@ export default function Card({ guitar, cart, setCart }) {
         setCart([...cart, item])
     }
   }
-return (
+
+  return (
         <div className="col-md-6 col-lg-4 my-4 row align-items-center">
             <div className="col-4">
                 <img 
                     className="img-fluid" 
-                    src={"../../public/img/" + image + ".jpg"} 
+                    src={`./img/${image}.jpg`} // Ruta relativa correcta para producción
                     alt="imagen guitarra" 
                 />
             </div>
