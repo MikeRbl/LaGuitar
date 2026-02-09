@@ -1,7 +1,5 @@
-// src/Componentes/Card.jsx
 export default function Card({ guitar, cart, setCart }) {
   const { name, image, description, price } = guitar
-
   function addToCart (item){
     const itemExit = cart.findIndex((guitar) => guitar.name === item.name)
     if(itemExit >= 0){
@@ -19,7 +17,8 @@ export default function Card({ guitar, cart, setCart }) {
             <div className="col-4">
                 <img 
                     className="img-fluid" 
-                    src={`img/${image}.jpg`}
+                    // Agregar la barra "/" al inicio
+                    src={`/img/${image}.jpg`} 
                     alt="imagen guitarra" 
                 />
             </div>
