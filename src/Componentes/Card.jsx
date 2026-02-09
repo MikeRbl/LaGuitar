@@ -19,7 +19,7 @@ export default function Card({ guitar, cart, setCart }) {
             <div className="col-4">
                 <img 
                     className="img-fluid" 
-                    src={`./img/${image}.jpg`} // Ruta relativa correcta para producción
+                    src={`img/${image}.jpg`}
                     alt="imagen guitarra" 
                 />
             </div>

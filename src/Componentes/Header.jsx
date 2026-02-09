@@ -13,7 +13,7 @@ export default function Header({ cart, setCart }) {
             <a href="/">
               <img 
                 className="img-fluid" 
-                src="./img/logo.svg" // Cambiado de /img/ a ./img/
+                src="img/logo.svg"
                 alt="imagen logo" 
               />
             </a>
@@ -23,7 +23,7 @@ export default function Header({ cart, setCart }) {
             <div className="carrito">
               <img 
                 className="img-fluid" 
-                src="./img/carrito.png" // Cambiado de /img/ a ./img/
+                src="img/carrito.png"
                 alt="imagen carrito" 
               />
 
