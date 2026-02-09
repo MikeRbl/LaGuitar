@@ -26,6 +26,13 @@ Se han incorporado controles completos para la manipulación de productos:
 * **Bootstrap / CSS**: Framework para diseño responsivo y estilos personalizados.
 * **JavaScript (ES6+)**: Uso de métodos de arreglos y lógica de operadores ternarios.
 
+## Produccion por medio de Github pages
+* **Build Pipeline**: Configurado para generar una carpeta dist optimizada.
+
+* **Deployment**: Automatizado mediante el script gh-pages para despliegue continuo.
+
+* **Asset Management**: Rutas relativas configuradas mediante la propiedad base en Vite para asegurar que las imágenes en public/img/ se carguen correctamente.
+
 ## Instalación y Ejecución
 
 1. **Instalar dependencias**:
